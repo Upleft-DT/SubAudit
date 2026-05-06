@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubAudit — YouTube Subscription Auditor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <hgroup>
+                <h1>SubAudit</h1>
+                <p>Audit your YouTube subscriptions — no login required</p>
+            </hgroup>
+        </header>
+
+        <section>
+            <label for="api-key">
+                YouTube Data API v3 Key
+                <small>Get one free at <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a> · Enable the YouTube Data API v3</small>
+            </label>
+            <input type="password" id="api-key" placeholder="AIza…" autocomplete="off">
+        </section>
+
+        <p id="error-message" class="error-msg" hidden></p>
+
+        <div id="dropzone" role="button" tabindex="0" aria-label="Drop file or click to select">
+            <p>Drop your Google Takeout <code>.zip</code> or <code>subscriptions.csv</code> here</p>
+            <p><small>or click to choose a file</small></p>
+            <input type="file" id="file-input" accept=".zip,.csv" hidden>
+        </div>
+
+        <section id="progress-section" hidden>
+            <progress id="progress-bar"></progress>
+            <p id="progress-text">Preparing…</p>
+        </section>
+
+        <div id="quota-warning" class="quota-warning" hidden>
+            <p>⚠ <strong>API quota exhausted.</strong> Some channels are shown as unknown. Partial results are displayed below.</p>
+        </div>
+
+        <section id="results-section" hidden>
+            <div class="results-header">
+                <h2>Results — <span id="total-count">0</span> subscriptions</h2>
+                <button id="export-btn" class="outline secondary">Download CSV</button>
+            </div>
+
+            <details id="dead-section" open>
+                <summary>Dead <span class="count dead">0</span> <small>no upload in 12+ months</small></summary>
+                <div id="dead-channels" class="channel-list"></div>
+            </details>
+
+            <details id="dormant-section" open>
+                <summary>Dormant <span class="count dormant">0</span> <small>no upload in 3–12 months</small></summary>
+                <div id="dormant-channels" class="channel-list"></div>
+            </details>
+
+            <details id="active-section" open>
+                <summary>Active <span class="count active">0</span> <small>uploaded in last 3 months</small></summary>
+                <div id="active-channels" class="channel-list"></div>
+            </details>
+
+            <details id="unknown-section">
+                <summary>Unknown <span class="count unknown">0</span> <small>data unavailable</small></summary>
+                <div id="unknown-channels" class="channel-list"></div>
+            </details>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+/* Drop zone */
+#dropzone {
+    border: 2px dashed var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+    user-select: none;
+    margin-bottom: 1.5rem;
+}
+
+#dropzone:hover,
+#dropzone.drag-over {
+    border-color: var(--pico-primary);
+    background-color: var(--pico-primary-background);
+}
+
+#dropzone p {
+    margin: 0;
+    color: var(--pico-muted-color);
+}
+
+#dropzone p:first-of-type {
+    color: var(--pico-color);
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Error */
+.error-msg {
+    color: var(--pico-del-color, #c0392b);
+    border-left: 3px solid currentColor;
+    padding-left: 0.75rem;
+}
+
+/* Quota warning */
+.quota-warning {
+    background-color: color-mix(in srgb, #e67e22 15%, transparent);
+    border: 1px solid #e67e22;
+    border-radius: var(--pico-border-radius);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.quota-warning p {
+    margin: 0;
+}
+
+/* Results header */
+.results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.results-header h2 {
+    margin: 0;
+}
+
+.results-header button {
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+/* Count pills in <summary> */
+.count {
+    display: inline-block;
+    padding: 0.1em 0.55em;
+    border-radius: 1em;
+    font-size: 0.8em;
+    font-weight: 700;
+    color: #fff;
+    vertical-align: middle;
+    margin: 0 0.2em;
+}
+
+.count.dead    { background: #c0392b; }
+.count.dormant { background: #e67e22; }
+.count.active  { background: #27ae60; }
+.count.unknown { background: #7f8c8d; }
+
+/* Status badges in rows */
+.status-badge {
+    display: inline-block;
+    padding: 0.15em 0.6em;
+    border-radius: 1em;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    text-transform: lowercase;
+}
+
+.status-badge.dead    { background: #c0392b; }
+.status-badge.dormant { background: #e67e22; }
+.status-badge.active  { background: #27ae60; }
+.status-badge.unknown { background: #7f8c8d; }
+
+/* Channel rows */
+.channel-list {
+    margin-top: 0.25rem;
+}
+
+.channel-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.5rem;
+    border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.channel-row:last-child {
+    border-bottom: none;
+}
+
+.channel-thumb {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+}
+
+.channel-thumb img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: block;
+}
+
+.thumb-placeholder {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--pico-muted-border-color);
+}
+
+.channel-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+}
+
+.channel-info a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.channel-info a:hover {
+    text-decoration: underline;
+}
+
+.sub-count {
+    color: var(--pico-muted-color);
+    font-size: 0.78rem;
+}
+
+.channel-video {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.82rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--pico-muted-color);
+}
+
+.channel-date {
+    flex-shrink: 0;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    color: var(--pico-muted-color);
+    min-width: 7.5rem;
+    text-align: right;
+}
+
+/* Progress */
+#progress-section {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#progress-bar {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+#progress-text {
+    color: var(--pico-muted-color);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Hide date/video columns on narrow screens */
+@media (max-width: 600px) {
+    .channel-date,
+    .channel-video {
+        display: none;
+    }
+}
