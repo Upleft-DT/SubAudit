@@ -320,6 +320,10 @@ async function handleFile(file) {
     }
 }
 
+if (typeof module !== 'undefined') {
+    module.exports = { parseFile, parseSubscriptionsCSV, parseCSVLine, classifyChannel, csvEscape, exportCSV };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const dropzone  = document.getElementById('dropzone');
     const fileInput = document.getElementById('file-input');
