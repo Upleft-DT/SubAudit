@@ -1,4 +1,4 @@
-let API_KEY = '';
+const API_KEY = 'YOUR_API_KEY_HERE';
 
 const ACTIVE_THRESHOLD_DAYS = 90;
 const DEAD_THRESHOLD_DAYS = 365;
@@ -297,10 +297,6 @@ async function handleFile(file) {
 
         const channels = await parseFile(file);
         if (!channels.length) throw new Error('No channels found. Check that this is the correct file.');
-
-        const key = document.getElementById('api-key').value.trim();
-        if (!key) throw new Error('Please enter your YouTube Data API v3 key above.');
-        API_KEY = key;
 
         ProgressTracker.update(0, channels.length);
 
